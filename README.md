@@ -23,14 +23,14 @@ A central research focus is developing and evaluating reproducible Kashmiri spee
 
 ## ✨ Key Features
 
-- 🎙️ **Kashmiri Speech Recognition** — Fine-tuning multilingual speech models for Kashmiri audio transcription.
-- ✍️ **Orthographic Normalization** — Standardizing Unicode character variants, diacritics, and written representations.
-- 🤖 **Conversational Processing** — Connecting recognized speech to NLP and language model components.
-- 🔊 **Speech Synthesis** — Generating spoken Kashmiri responses through TTS.
-- 📊 **Model Evaluation** — Measuring transcription performance using WER and CER.
-- 🔬 **Reproducible Experiments** — Organizing datasets, configurations, and evaluation results for consistent benchmarking.
+-  **Kashmiri Speech Recognition** — Fine-tuning multilingual speech models for Kashmiri audio transcription.
+-  **Orthographic Normalization** — Standardizing Unicode character variants, diacritics, and written representations.
+-  **Conversational Processing** — Connecting recognized speech to NLP and language model components.
+-  **Speech Synthesis** — Generating spoken Kashmiri responses through TTS.
+-  **Model Evaluation** — Measuring transcription performance using WER and CER.
+-  **Reproducible Experiments** — Organizing datasets, configurations, and evaluation results for consistent benchmarking.
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```mermaid
 flowchart TD
@@ -55,7 +55,7 @@ flowchart TD
     style F fill:#6f263e,color:#fff,stroke:#6f263e
 ```
 
-## 🧰 Technology Stack
+##  Technology Stack
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,pytorch,git,github,vscode" alt="Python, PyTorch, Git, GitHub, and VS Code" />
