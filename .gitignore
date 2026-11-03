@@ -1,39 +1,16 @@
 # ==========================================
-# Python & Environment
+# 1. Virtual Environments
 # ==========================================
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environments
 .venv/
 venv/
 ENV/
 env/
 env.bak/
 venv.bak/
+.conda/
 
 # ==========================================
-# Secrets, Credentials, and Environment Vars
+# 2. Secrets & Environment Files
 # ==========================================
 .env
 *.env
@@ -47,12 +24,39 @@ secrets/
 *credentials*.json
 *token*.json
 auth*.json
-id_rsa
-id_ecdsa
-id_ed25519
 
 # ==========================================
-# Audio Files (Private Audio & Recordings)
+# 3. Caches & Bytecode
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# ==========================================
+# 4. Generated Outputs & Experiment Tracking
+# ==========================================
+outputs/
+results/
+runs/
+wandb/
+lightning_logs/
+logs/
+*.log
+dist/
+build/
+*.egg-info/
+
+# ==========================================
+# 5. Private Audio & Recordings
 # ==========================================
 *.wav
 *.mp3
@@ -66,9 +70,8 @@ id_ed25519
 *.alac
 
 # ==========================================
-# Datasets & Large Data Files
+# 6. Local & Unapproved Datasets
 # ==========================================
-# Exclude raw, interim, and processed data by default
 data/raw/*
 data/processed/*
 data/interim/*
@@ -77,7 +80,7 @@ data/interim/*
 !data/interim/.gitkeep
 !data/README.md
 
-# Large data formats
+# Large archive & tabular dataset formats
 *.tar
 *.tar.gz
 *.tgz
@@ -85,8 +88,6 @@ data/interim/*
 *.7z
 *.rar
 *.gz
-*.bz2
-*.xz
 *.parquet
 *.feather
 *.arrow
@@ -96,7 +97,7 @@ data/interim/*
 *.db
 
 # ==========================================
-# Model Weights, Checkpoints & Artifacts
+# 7. Model Weights, Checkpoints & Artifacts
 # ==========================================
 *.pt
 *.pth
@@ -105,7 +106,6 @@ data/interim/*
 *.onnx
 *.ckpt
 *.tflite
-*.h5
 *.weights
 *.pkl
 *.pickle
@@ -113,31 +113,15 @@ data/interim/*
 checkpoints/
 models/weights/
 models/checkpoints/
-models/*.safetensors
-models/*.pt
-models/*.bin
 
 # ==========================================
-# Notebooks & Testing
+# 8. OS & Editor files
 # ==========================================
-.ipynb_checkpoints
-*-checkpoint.ipynb
-.pytest_cache/
-.coverage
-htmlcov/
-.mypy_cache/
-.ruff_cache/
-
-# ==========================================
-# IDE & Operating System Files
-# ==========================================
+.DS_Store
+Thumbs.db
+Desktop.ini
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.DS_Store
-Thumbs.db
-Desktop.ini
-logs/
-*.log

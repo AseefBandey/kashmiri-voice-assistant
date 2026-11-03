@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "final-year-project"
+name = "kashmiri-voice-assistant"
 version = "0.1.0"
-description = "Final Year AI/ML Engineering Project Repository"
+description = "ASR Workstream for Kashmiri Voice Assistant"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -26,7 +26,6 @@ dev = [
     "pytest-cov>=4.1.0",
     "ruff>=0.1.0",
     "black>=23.0.0",
-    "pre-commit>=3.3.0",
 ]
 
 [tool.pytest.ini_options]
