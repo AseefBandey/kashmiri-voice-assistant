@@ -115,8 +115,9 @@ models/weights/
 models/checkpoints/
 
 # ==========================================
-# 8. OS & Editor files
+# 8. OS, Editor & Document Files
 # ==========================================
+*.pdf
 .DS_Store
 Thumbs.db
 Desktop.ini
