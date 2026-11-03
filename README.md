@@ -1,66 +1,98 @@
-# Kashmiri Voice Assistant
+# 🗣️ Kashmiri Voice Assistant
 
-A speech processing project focused on building a reproducible Kashmiri voice assistant with automatic speech recognition (ASR), orthographic normalization, natural language processing, and text-to-speech capabilities.
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Kashmiri-8A2BE2?style=for-the-badge" alt="Kashmiri Language" />
+  <img src="https://img.shields.io/badge/Domain-Speech%20Processing-007ACC?style=for-the-badge" alt="Speech Processing" />
+  <img src="https://img.shields.io/badge/Focus-ASR%20%7C%20NLP%20%7C%20TTS-2E8B57?style=for-the-badge" alt="ASR NLP TTS" />
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
+</p>
+
+<p align="center">
+  <strong>Building a voice-based conversational experience for Kashmiri through speech recognition, text normalization, language processing, and speech synthesis.</strong>
+</p>
 
 ---
 
-## Overview
+## 📖 About the Project
 
-The **Kashmiri Voice Assistant** aims to enable natural voice-based interaction in Kashmiri through a modular speech processing pipeline. The project focuses on improving speech recognition accuracy, standardizing Kashmiri text representations, and supporting end-to-end spoken communication.
+The **Kashmiri Voice Assistant** is a speech-processing project focused on enabling natural voice-based interaction in Kashmiri.
 
-The ASR workstream focuses on developing and evaluating Kashmiri speech-to-text models through reproducible experiments and standardized evaluation metrics.
+The project combines automatic speech recognition (ASR), orthographic normalization, natural language processing (NLP), and text-to-speech (TTS) into a modular pipeline.
 
-## Key Objectives
+A central research focus is developing and evaluating reproducible Kashmiri speech-to-text models, with particular attention to the complexities of Kashmiri Perso-Arabic script and Unicode representation.
 
-- **Acoustic Modeling:** Fine-tune multilingual speech recognition models on Kashmiri speech data.
-- **Orthographic Normalization:** Standardize Kashmiri Perso-Arabic Unicode representations, character variants, and diacritics.
-- **Model Evaluation:** Benchmark speech recognition performance using Word Error Rate (WER) and Character Error Rate (CER).
-- **Conversational Processing:** Integrate recognized speech with NLP and language model components.
-- **Speech Synthesis:** Generate spoken Kashmiri responses through text-to-speech (TTS).
+## ✨ Key Features
 
-## Project Architecture
+- 🎙️ **Kashmiri Speech Recognition** — Fine-tuning multilingual speech models for Kashmiri audio transcription.
+- ✍️ **Orthographic Normalization** — Standardizing Unicode character variants, diacritics, and written representations.
+- 🤖 **Conversational Processing** — Connecting recognized speech to NLP and language model components.
+- 🔊 **Speech Synthesis** — Generating spoken Kashmiri responses through TTS.
+- 📊 **Model Evaluation** — Measuring transcription performance using WER and CER.
+- 🔬 **Reproducible Experiments** — Organizing datasets, configurations, and evaluation results for consistent benchmarking.
 
-The system follows a modular pipeline that transforms spoken Kashmiri input into an intelligible spoken response.
+## 🏗️ System Architecture
 
 ```mermaid
-flowchart LR
-    A["Kashmiri Voice Input"] --> B["Audio Processing"]
-    B --> C["Kashmiri ASR<br/>Speech-to-Text"]
-    C --> D["NLP / LLM Processing"]
-    D --> E["Response Generation"]
-    E --> F["Kashmiri Text-to-Speech"]
-    F --> G["Spoken Kashmiri Output"]
+flowchart TD
+    A["🎙️ Kashmiri Voice Input"]
+    B["Audio Processing"]
+    C["Kashmiri ASR"]
+    D["Orthographic Normalization"]
+    E["NLP / LLM Processing"]
+    F["Response Generation"]
+    G["Kashmiri Text-to-Speech"]
+    H["🔊 Spoken Kashmiri Output"]
 
-    classDef green fill:#1c4436,stroke:#1c4436,color:#fff;
-    classDef brown fill:#5a3825,stroke:#5a3825,color:#fff;
-    classDef maroon fill:#6f263e,stroke:#6f263e,color:#fff;
+    A --> B --> C --> D --> E --> F --> G --> H
 
-    class A,G green;
-    class B,F brown;
-    class C,D,E maroon;
+    style A fill:#1c4436,color:#fff,stroke:#1c4436
+    style H fill:#1c4436,color:#fff,stroke:#1c4436
+    style B fill:#5a3825,color:#fff,stroke:#5a3825
+    style G fill:#5a3825,color:#fff,stroke:#5a3825
+    style C fill:#6f263e,color:#fff,stroke:#6f263e
+    style D fill:#6f263e,color:#fff,stroke:#6f263e
+    style E fill:#6f263e,color:#fff,stroke:#6f263e
+    style F fill:#6f263e,color:#fff,stroke:#6f263e
 ```
 
-## Repository Structure
+## 🧰 Technology Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,pytorch,git,github,vscode" alt="Python, PyTorch, Git, GitHub, and VS Code" />
+</p>
+
+| Component | Purpose |
+|---|---|
+| Python | Core development and experimentation |
+| PyTorch | Deep learning and acoustic model training |
+| Multilingual ASR models | Kashmiri speech recognition |
+| NLP / LLM components | Conversational understanding and response generation |
+| TTS models | Spoken response generation |
+| WER / CER | Speech recognition evaluation |
+
+*The stack reflects the intended project architecture; specific model implementations and dependencies may evolve.*
+
+## 📂 Repository Structure
 
 ```text
 kashmiri-voice-assistant/
 ├── README.md
 ├── .gitignore
 ├── .env.example
-├── pyproject.toml          # Project configuration and dependencies
-├── docs/                  # Documentation
-├── configs/               # Model and experiment configurations
-├── data/                  # Local or approved datasets (not tracked)
-├── notebooks/              # Research and experimentation notebooks
+├── pyproject.toml
+├── configs/                 # Model and experiment configurations
+├── data/                    # Local or approved datasets
+├── docs/                    # Project documentation
+├── notebooks/               # Research and experimentation
+├── reports/                 # Evaluation results and reports
+├── scripts/                 # Training and evaluation scripts
 ├── src/
 │   └── voice_assistant/
-│       └── asr/           # Speech recognition and normalization
-├── scripts/               # Training, evaluation, and utility scripts
-├── reports/               # Evaluation results and experiment reports
-└── tests/                 # Automated tests
+│       └── asr/             # ASR and text normalization
+└── tests/                   # Automated tests
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -70,95 +102,101 @@ kashmiri-voice-assistant/
 
 ### Installation
 
-1. Clone the repository:
+**1. Clone the repository**
 
-   ```bash
-   git clone https://github.com/AseefBandey/kashmiri-voice-assistant.git
-   cd kashmiri-voice-assistant
-   ```
+```bash
+git clone https://github.com/AseefBandey/kashmiri-voice-assistant.git
+cd kashmiri-voice-assistant
+```
 
-2. Create and activate a virtual environment:
+**2. Create a virtual environment**
 
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-   On Windows:
+Windows:
 
-   ```powershell
-   .venv\Scripts\activate
-   ```
+```powershell
+.venv\Scripts\activate
+```
 
-3. Install the project and development dependencies:
+**3. Install dependencies**
 
-   ```bash
-   python -m pip install --upgrade pip
-   pip install -e ".[dev]"
-   ```
+```bash
+python -m pip install --upgrade pip
+pip install -e ".[dev]"
+```
 
-4. Configure environment variables:
+**4. Configure environment variables**
 
-   ```bash
-   cp .env.example .env
-   ```
+```bash
+cp .env.example .env
+```
 
-   Update `.env` with the required local configuration. Do not commit secrets or credentials.
+Update `.env` with the required local configuration. Keep credentials and secrets out of version control.
 
-## Testing
+## 🧪 Testing
 
-Run the automated test suite to verify the development environment and implemented components.
-
-Using `unittest`:
+Run the test suite to verify the implemented components.
 
 ```bash
 PYTHONPATH=src python -m unittest discover -s tests
 ```
 
-Or, if `pytest` is configured:
+Alternatively, if `pytest` is configured:
 
 ```bash
 pytest
 ```
 
-## Evaluation
-
-Speech recognition performance is evaluated using the following metrics:
+## 📈 Evaluation Metrics
 
 | Metric | Description |
 |---|---|
-| Word Error Rate (WER) | Measures word-level transcription errors, including substitutions, deletions, and insertions. |
-| Character Error Rate (CER) | Measures character-level transcription errors, including substitutions, deletions, and insertions. |
+| Word Error Rate (WER) | Measures word-level transcription errors |
+| Character Error Rate (CER) | Measures character-level transcription errors |
 
-Evaluation should use consistent datasets, preprocessing procedures, and normalization rules to ensure meaningful comparisons between model configurations.
+Both metrics account for substitutions, deletions, and insertions. Evaluation should use consistent datasets, preprocessing, and normalization rules to ensure fair comparisons.
 
-## Data and Reproducibility
+## 🔬 Research & Reproducibility
 
-- Use datasets that are publicly available, appropriately licensed, or otherwise approved for research.
-- Keep raw audio and other large datasets out of version control.
-- Document dataset sources, preprocessing steps, model configurations, and evaluation settings.
-- Record experiment results and model versions to support reproducibility.
+The project emphasizes transparent and reproducible experimentation:
 
-## Development Status
+- Use appropriately licensed and approved speech datasets.
+- Keep raw audio and large datasets out of version control.
+- Document preprocessing and normalization procedures.
+- Record model configurations, training settings, and evaluation results.
+- Maintain consistent evaluation protocols across experiments.
 
-This repository supports the ongoing development of the Kashmiri speech recognition and voice assistant pipeline. Individual components may be under active development.
+## 🛣️ Roadmap
 
-## Contributing
+- [ ] Develop and validate Kashmiri orthographic normalization.
+- [ ] Prepare reproducible speech dataset preprocessing pipelines.
+- [ ] Fine-tune multilingual ASR models for Kashmiri.
+- [ ] Benchmark models using WER and CER.
+- [ ] Integrate conversational NLP components.
+- [ ] Integrate Kashmiri text-to-speech.
+- [ ] Develop an end-to-end voice assistant interface.
 
-Contributions to speech recognition, text normalization, evaluation, documentation, and testing are welcome.
+## 🤝 Contributing
 
-When contributing:
+Contributions are welcome in speech recognition, text normalization, NLP, speech synthesis, testing, and documentation.
 
-1. Keep changes modular and reproducible.
-2. Add or update tests for new functionality.
-3. Document relevant configuration and preprocessing changes.
-4. Follow the existing project structure and coding conventions.
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes and add relevant tests.
+4. Submit a pull request with a clear description.
 
-## License
+## 📄 License
 
-A license has not yet been specified. Please check the repository for licensing information before using, modifying, or redistributing the project.
+A license has not yet been specified. Please check the repository for licensing information before using or redistributing the project.
 
 ---
 
-**Project:** Kashmiri Voice Assistant  
+<p align="center">
+  <strong>Advancing speech technology for the Kashmiri language.</strong>
+</p>
+
 
