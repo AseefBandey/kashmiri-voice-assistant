@@ -91,26 +91,4 @@ PYTHONPATH=src python3 -m unittest discover tests
 pytest
 ```
 
----
-
-## 🤝 Contribution & Pull Request Rules
-
-1. **No Direct Commits to `main`**:
-   - The `main` branch is protected.
-   - All contributions must be made through a feature branch and merged via Pull Request.
-2. **Branch Naming Standard**:
-   - `feat/<jira-id>-<description>`
-   - `fix/<jira-id>-<description>`
-   - `docs/<jira-id>-<description>`
-3. **Pull Request Checklist**:
-   - [ ] Linked Jira issue (e.g. `ASR-101`)
-   - [ ] Unit tests pass locally
-   - [ ] Documentation updated
-   - [ ] **Data & Privacy Check**: No credentials, private audio recordings, unapproved datasets, or model weights committed.
-
----
-
-## 🔒 Security & Privacy Notice
-
-> [!CAUTION]
-> **Strict Policy**: Never commit audio datasets, private recordings, model weights (`.pt`, `.bin`, `.safetensors`), credentials, or `.env` files to this repository. All sensitive artifacts are excluded via `.gitignore`.
+--
