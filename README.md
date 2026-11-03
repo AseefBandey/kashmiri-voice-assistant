@@ -1,4 +1,4 @@
-# 🗣️ Kashmiri Voice Assistant
+#  Kashmiri Voice Assistant
 
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Kashmiri-8A2BE2?style=for-the-badge" alt="Kashmiri Language" />
