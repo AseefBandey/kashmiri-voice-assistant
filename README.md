@@ -1,119 +1,190 @@
-# Kashmiri Voice Assistant — ASR Workstream
+<div align="center">
 
-Collaborative repository for the **Automatic Speech Recognition (ASR)** workstream of the Kashmiri Voice Assistant project.
+# 🎙️ Kashmiri Voice Assistant (KoshurVoice)
+### Automatic Speech Recognition (ASR) Workstream
 
-This workstream focuses on building a reproducible Kashmiri speech-to-text pipeline, including orthographic normalization, acoustic model fine-tuning, and evaluation on conversational and read Kashmiri speech.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Testing: Pytest](https://img.shields.io/badge/tests-pytest-green.svg)](https://docs.pytest.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+<p align="center">
+  <b>A research-grade acoustic modeling and orthographic normalization pipeline engineered for low-resource Kashmiri speech processing.</b>
+</p>
+
+[System Architecture](#-system-architecture) •
+[Directory Layout](#-project-structure) •
+[Quickstart](#-quickstart--installation) •
+[Verification](#-testing--quality-assurance) •
+[Data Governance](#-data-governance--privacy) •
+[Collaboration](#-contribution--workflow)
 
 ---
 
-## 📌 Project Purpose
+</div>
 
-- **Acoustic & Language Modeling**: Developing and fine-tuning robust ASR models (e.g. Whisper, MMS, Wav2Vec2) for Kashmiri.
-- **Orthographic Standardization**: Handling Kashmiri Perso-Arabic orthographic variation and canonicalizing transcriptions.
-- **Reproducible Evaluation**: Standardized benchmark harness reporting Word Error Rate (WER) and Character Error Rate (CER).
-- **Data Governance**: Enforcing rigorous privacy policies to protect proprietary and private audio recordings.
+## 📖 Executive Summary
+
+The **Kashmiri Voice Assistant (KoshurVoice) — ASR Workstream** is dedicated to building an end-to-end, reproducible speech-to-text pipeline for the Kashmiri language (Perso-Arabic script). Kashmiri poses distinct computational challenges: significant orthographic variance across texts, high degrees of phonetic nuance (e.g., vowel centralization, palatalization), and scarce supervised training pairs.
+
+This repository hosts the foundational engineering infrastructure for:
+1. **Orthographic Canonicalization**: Deterministic normalization across divergent Perso-Arabic unicode character representations (e.g., Arabic vs. Farsi Yeh, Keheh vs. Kaf).
+2. **Acoustic Modeling & Adaptation**: Fine-tuning pre-trained multi-lingual foundations (Whisper, Meta MMS, Wav2Vec2-XLSR) on annotated Kashmiri corpora.
+3. **Evaluation Harness**: Automated evaluation pipelines tracking Word Error Rate (WER), Character Error Rate (CER), and latency across domain-specific test benches.
 
 ---
 
-## 📂 Repository Structure
+## 🏛 System Architecture
+
+The following diagram illustrates the ASR inference and normalization pipeline within the broader voice assistant framework:
+
+```mermaid
+flowchart LR
+    A["Raw Kashmiri Audio<br/>(16 kHz Mono WAV)"] --> B["Acoustic Preprocessing<br/>(Spectrogram / MFCC)"]
+    B --> C["Acoustic Encoder / ASR<br/>(Whisper / MMS Adapter)"]
+    C --> D["Raw Token Decoding<br/>(Beam Search / Greedy)"]
+    D --> E["Kashmiri Normalizer<br/>(Orthographic Canonicalization)"]
+    E --> F["Normalized Kashmiri Text<br/>(NFC / Standard Perso-Arabic)"]
+    F --> G["Downstream NLU / Intent Parser"]
+```
+
+---
+
+## 📂 Project Structure
+
+The repository follows standard AI/ML production engineering conventions:
 
 ```text
 kashmiri-voice-assistant/
-├── README.md               # Project purpose, setup, and workflow
-├── .gitignore              # Rules excluding audio, models, secrets, and caches
-├── .env.example            # Template for environment variables (copy to .env)
-├── pyproject.toml          # Package configuration and dependencies (or requirements.txt)
-├── docs/                   # Technical specs, orthography notes, meeting logs
-├── configs/                # Hyperparameters and pipeline configuration YAMLs
-├── data/                   # Local/approved data only; strictly ignored by Git
-│   ├── raw/                # Untracked raw data
-│   ├── processed/          # Untracked preprocessed features
-│   └── README.md           # Data policy and privacy requirements
-├── notebooks/              # Jupyter notebooks for EDA and error analysis
-├── src/
+├── .github/
+│   └── pull_request_template.md    # Standardized PR checklist (Jira, tests, data checks)
+├── configs/                        # Pipeline & experiment hyperparameter declarations
+│   └── config.yaml.example         # Baseline configuration template
+├── data/                           # Local datasets directory (NEVER committed to Git)
+│   ├── raw/                        # Immutable raw audio collections
+│   ├── interim/                    # Preprocessed spectrograms / tokens
+│   ├── processed/                  # Manifests and train/val/test splits
+│   └── README.md                   # Data privacy guidelines & cloud fetch instructions
+├── docs/                           # Architecture specs, orthography standards, notes
+├── notebooks/                      # Exploratory data analysis (EDA) & error diagnostic notebooks
+├── reports/                        # Publication figures, confusion matrices, and benchmark tables
+├── scripts/                        # Standalone CLI tools (data loaders, benchmark harnesses)
+├── src/                            # Core Python source package
 │   └── voice_assistant/
-│       └── asr/            # Kashmiri ASR package (normalizers, model stubs, pipelines)
-├── scripts/                # Utility scripts (batch preprocessing, inference runs)
-├── reports/                # Evaluation reports, metrics plots, and paper drafts
-└── tests/                  # Unit and integration test suite
+│       ├── __init__.py
+│       └── asr/                    # Speech recognition module
+│           ├── __init__.py
+│           └── normalizer.py       # Deterministic text normalizer & character mapper
+├── tests/                          # Unit and integration test suite
+│   ├── __init__.py
+│   ├── test_normalizer.py          # Orthographic normalization test cases
+│   └── test_placeholder.py         # Test harness sanity assertions
+├── .env.example                    # Template for local environment variables & tokens
+├── .gitignore                      # Hardened filter for secrets, weights, audio & datasets
+├── CONTRIBUTING.md                 # Branching policies, code review protocol, Jira guidelines
+├── pyproject.toml                  # Modern PEP 517/621 package build configuration
+├── requirements.txt                # Production runtime dependencies
+└── requirements-dev.txt            # Development, linting, and testing dependencies
 ```
 
 ---
 
-## 🛠️ Python Environment & Dependency Setup
+## ⚡ Quickstart & Installation
 
-You can choose either standard `requirements.txt` or `pyproject.toml`.
+### 1. Prerequisites
+- **Operating System**: Linux (Ubuntu 22.04+ recommended), macOS, or WSL2 on Windows.
+- **Python**: Version `3.10` or higher (`python3 --version`).
+- **Git**: Configured with user identity.
 
-### Prerequisites
-- Python 3.10+
-- Git
+### 2. Environment Setup
 
-### Initial Setup Steps
+Clone the repository and set up an isolated virtual environment:
 
 ```bash
-# 1. Clone the shared repository
-git clone https://github.com/<OWNER>/kashmiri-voice-assistant.git
+# Clone the shared repository
+git clone https://github.com/<ORGANIZATION-OR-USER>/kashmiri-voice-assistant.git
 cd kashmiri-voice-assistant
 
-# 2. Create and activate a Python virtual environment
+# Create virtual environment
 python3 -m venv .venv
-source .venv/bin/activate       # On Linux/macOS
-# .venv\Scripts\activate        # On Windows (cmd/PowerShell)
 
-# 3. Upgrade pip and install dependencies
+# Activate environment
+source .venv/bin/activate       # Linux / macOS
+# .venv\Scripts\activate        # Windows (cmd/PowerShell)
+
+# Upgrade pip to latest release
 pip install --upgrade pip
+```
 
-# Option A: Install via requirements.txt
+### 3. Install Dependencies
+
+You can choose between standard `requirements` or modern editable `pyproject.toml` installation:
+
+```bash
+# Option A: Standard requirements (Fastest for experimentation)
 pip install -r requirements-dev.txt
 
-# Option B: Install via pyproject.toml (editable mode)
+# Option B: Editable package installation (Recommended for development)
 pip install -e ".[dev]"
-
-# 4. Copy environment configuration
-cp .env.example .env
 ```
 
-### Run the Verification Check
-Verify that the test suite and ASR text normalization modules work correctly:
+### 4. Configure Environment Variables
+
 ```bash
-# Using unittest
+# Create local configuration from template
+cp .env.example .env
+
+# Edit .env with your local credentials (HuggingFace token, W&B key)
+# Note: .env is automatically ignored by Git and must NEVER be committed.
+```
+
+---
+
+## 🧪 Testing & Quality Assurance
+
+All modules are strictly tested to prevent regressions in normalization and decoding logic.
+
+### Running Test Suite
+Execute the unit test harness with either `unittest` or `pytest`:
+
+```bash
+# Using Python's built-in test runner
 PYTHONPATH=src python3 -m unittest discover tests
 
-# Or using pytest (if installed)
-pytest
+# Or using pytest with verbosity
+pytest -v
+```
+
+### Code Formatting & Static Analysis
+We enforce standard PEP 8 formatting via [Ruff](https://github.com/astral-sh/ruff) and [Black](https://github.com/psf/black):
+
+```bash
+# Lint checks
+ruff check .
+
+# Automated code formatting
+black --check .
 ```
 
 ---
 
-## 🤝 Contribution & Collaboration Rules
-
-To ensure stability across the shared repository:
-
-1. **Strictly No Direct Commits to `main`**:
-   - The `main` branch is protected.
-   - All contributions must be made via feature branches and Pull Requests (PRs).
-2. **Branch Naming Standard**:
-   - Features: `feat/<jira-id>-<description>` (e.g., `feat/ASR-101-kashmiri-normalizer`)
-   - Bug Fixes: `fix/<jira-id>-<description>` (e.g., `fix/ASR-104-sampling-rate-fix`)
-   - Docs / Chores: `docs/<jira-id>-<description>`, `chore/...`
-3. **Pull Request Protocol**:
-   - Each PR must link a Jira issue.
-   - Every PR must pass all test checks.
-   - Every PR requires at least one approving peer review before merging.
-
-For detailed guidelines, see [CONTRIBUTING.md](file:///home/dtm1n/Downloads/FinalYear/CONTRIBUTING.md).
-
----
-
-## 🔒 Data & Security Governance
+## 🔒 Data Governance & Privacy Protocol
 
 > [!CAUTION]
-> **Strictly check your commits before pushing!**
-> - **Never commit audio datasets or private recordings** (`.wav`, `.mp3`, `.flac`, etc.).
-> - **Never commit model weights or checkpoints** (`.pt`, `.bin`, `.safetensors`).
-> - **Never commit credentials, API keys, or `.env` files**.
+> **Strict Repository Hygiene Policy**
+> This repository strictly tracks **source code, documentation, and configuration files only**.
 
-To verify your staged changes before committing:
+The included [.gitignore](file:///home/dtm1n/Downloads/FinalYear/.gitignore) actively blocks:
+- **Audio Files**: `*.wav`, `*.mp3`, `*.flac`, `*.m4a`, `*.ogg`, `*.opus`
+- **Model Checkpoints**: `*.pt`, `*.pth`, `*.bin`, `*.safetensors`, `*.onnx`, `*.ckpt`
+- **Raw Datasets**: `data/raw/*`, `data/processed/*`, `*.tar.gz`, `*.parquet`, `*.csv`
+- **Secrets & Keys**: `.env`, `*.pem`, `*.key`, `*credentials*.json`
+- **Caches & Outputs**: `outputs/`, `runs/`, `wandb/`, `__pycache__/`, `.cache/`
+
+### Pre-Commit Local Audit
+Before pushing any branch, contributors must verify that no sensitive binaries are staged:
+
 ```bash
 git status
 git diff --cached --stat
@@ -121,11 +192,40 @@ git diff --cached --stat
 
 ---
 
-## ✅ Acceptance Criteria Tracker
+## 🤝 Contribution & Workflow
 
-- [x] Shared GitHub repository structure initialized.
-- [x] Both contributors can clone and set up the repository.
-- [x] Setup instructions verified with built-in sanity checks.
-- [x] `.gitignore` thoroughly configured and verified.
-- [x] Pull request template and branch naming standards established.
-- [x] Zero credentials, private audio, or model weights tracked in Git.
+To maintain production stability on `main`, all contributors must follow our trunk-based development standard:
+
+1. **Direct pushes to `main` are strictly blocked.**
+2. **Branching Convention**:
+   - `feat/<jira-id>-<short-description>` (e.g., `feat/ASR-101-whisper-lora-tuning`)
+   - `fix/<jira-id>-<short-description>` (e.g., `fix/ASR-104-diacritic-stripping`)
+   - `docs/<jira-id>-<short-description>` (e.g., `docs/ASR-108-orthography-spec`)
+3. **Pull Request Protocol**:
+   - Open a PR targeting `main`.
+   - The automated PR template [.github/pull_request_template.md](file:///home/dtm1n/Downloads/FinalYear/.github/pull_request_template.md) will require verification of test runs, Jira linking, and data privacy clearance.
+   - Requires at least one approving peer review prior to merging.
+
+For full guidelines, please review [CONTRIBUTING.md](file:///home/dtm1n/Downloads/FinalYear/CONTRIBUTING.md).
+
+---
+
+## 📑 Citation & Academic Reference
+
+If you use this codebase, normalization pipelines, or benchmark harnesses in academic research, please cite:
+
+```bibtex
+@misc{bandey2026koshurvoice,
+  author       = {Bandey, Aseef Ahmad},
+  title        = {KoshurVoice: An Orthography-Robust ASR and Speech Processing Pipeline for Kashmiri},
+  year         = {2026},
+  publisher    = {GitHub},
+  howpublished = {\url{https://github.com/AseefBandey/kashmiri-voice-assistant}}
+}
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the terms of the [MIT License](LICENSE).
