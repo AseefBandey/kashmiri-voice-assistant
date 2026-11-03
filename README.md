@@ -14,15 +14,26 @@ The Automatic Speech Recognition (ASR) workstream focuses on building a reproduc
 
 ---
 
-## 🏛 Architecture
+## 🏛 Proposed End-to-End Pipeline
+
+![Proposed End-to-End Pipeline](docs/pipeline.png)
 
 ```mermaid
 flowchart LR
-    A["Kashmiri Audio (16 kHz WAV)"] --> B["Acoustic Preprocessing"]
-    B --> C["Acoustic Model (ASR)"]
-    C --> D["Token Decoding"]
-    D --> E["Kashmiri Normalizer"]
-    E --> F["Kashmiri Text"]
+    A["Kashmiri Voice Input"] --> B["Audio Processing"]
+    B --> C["Kashmiri ASR<br/>(Speech-to-Text)"]
+    C --> D["NLP / LLM Processing"]
+    D --> E["Response Generation"]
+    E --> F["Kashmiri Text-to-Speech"]
+    F --> G["Spoken Kashmiri Output"]
+
+    classDef green fill:#1c4436,stroke:#1c4436,color:#fff;
+    classDef brown fill:#5a3825,stroke:#5a3825,color:#fff;
+    classDef maroon fill:#6f263e,stroke:#6f263e,color:#fff;
+
+    class A,G green;
+    class B,F brown;
+    class C,D,E maroon;
 ```
 
 ---
