@@ -1,17 +1,11 @@
-# ==========================================
-# 1. Virtual Environments
-# ==========================================
+# Virtual environments
 .venv/
 venv/
-ENV/
 env/
-env.bak/
-venv.bak/
+ENV/
 .conda/
 
-# ==========================================
-# 2. Secrets & Environment Files
-# ==========================================
+# Environment and secrets
 .env
 *.env
 .env.*
@@ -19,15 +13,11 @@ venv.bak/
 *.pem
 *.key
 *.cert
-*.crt
 secrets/
 *credentials*.json
 *token*.json
-auth*.json
 
-# ==========================================
-# 3. Caches & Bytecode
-# ==========================================
+# Caches and bytecode
 __pycache__/
 *.py[cod]
 *$py.class
@@ -41,9 +31,7 @@ htmlcov/
 .ipynb_checkpoints/
 *-checkpoint.ipynb
 
-# ==========================================
-# 4. Generated Outputs & Experiment Tracking
-# ==========================================
+# Generated outputs
 outputs/
 results/
 runs/
@@ -55,9 +43,7 @@ dist/
 build/
 *.egg-info/
 
-# ==========================================
-# 5. Private Audio & Recordings
-# ==========================================
+# Private audio
 *.wav
 *.mp3
 *.flac
@@ -67,20 +53,10 @@ build/
 *.opus
 *.wma
 *.aiff
-*.alac
 
-# ==========================================
-# 6. Local & Unapproved Datasets
-# ==========================================
-data/raw/*
-data/processed/*
-data/interim/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/interim/.gitkeep
-!data/README.md
-
-# Large archive & tabular dataset formats
+# Local datasets
+data/*
+!data/.gitkeep
 *.tar
 *.tar.gz
 *.tgz
@@ -95,10 +71,10 @@ data/interim/*
 *.hdf5
 *.sqlite3
 *.db
+*.csv
+*.tsv
 
-# ==========================================
-# 7. Model Weights, Checkpoints & Artifacts
-# ==========================================
+# Model weights and checkpoints
 *.pt
 *.pth
 *.bin
@@ -107,22 +83,11 @@ data/interim/*
 *.ckpt
 *.tflite
 *.weights
-*.pkl
-*.pickle
-*.joblib
 checkpoints/
-models/weights/
-models/checkpoints/
 
-# ==========================================
-# 8. OS, Editor & Document Files
-# ==========================================
+# Documents & OS
 *.pdf
 .DS_Store
 Thumbs.db
-Desktop.ini
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
