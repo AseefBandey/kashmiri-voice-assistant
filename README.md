@@ -180,14 +180,7 @@ The project emphasizes transparent and reproducible experimentation:
 - [ ] Integrate Kashmiri text-to-speech.
 - [ ] Develop an end-to-end voice assistant interface.
 
-## 🤝 Contributing
 
-Contributions are welcome in speech recognition, text normalization, NLP, speech synthesis, testing, and documentation.
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Make your changes and add relevant tests.
-4. Submit a pull request with a clear description.
 
 ## 📄 License
 
