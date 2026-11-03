@@ -16,10 +16,6 @@
 [System Architecture](#-system-architecture) •
 [Directory Layout](#-project-structure) •
 [Quickstart](#-quickstart--installation) •
-[Verification](#-testing--quality-assurance) •
-[Data Governance](#-data-governance--privacy) •
-[Collaboration](#-contribution--workflow)
-
 ---
 
 </div>
