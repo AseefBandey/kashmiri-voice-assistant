@@ -1,6 +1,6 @@
-# Kashmiri Voice Assistant — ASR Workstream
+# Kashmiri Voice Assistant 
 
-A professional speech recognition and orthographic normalization pipeline for low-resource Kashmiri speech processing.
+A professional speech recognition and orthographic normalization pipeline for Kashmiri speech processing.
 
 ---
 
@@ -10,13 +10,11 @@ The Automatic Speech Recognition (ASR) workstream focuses on building a reproduc
 - **Acoustic Modeling**: Fine-tuning multi-lingual speech models on Kashmiri speech.
 - **Orthographic Normalization**: Standardizing Kashmiri Perso-Arabic unicode representations and diacritics.
 - **Standardized Evaluation**: Benchmarking models using Word Error Rate (WER) and Character Error Rate (CER).
-- **Data Governance**: Enforcing strict protocols to safeguard audio recordings, proprietary datasets, and credentials.
 
 ---
 
-## 🏛 Proposed End-to-End Pipeline
+## Project Architecture
 
-![Proposed End-to-End Pipeline](docs/pipeline.png)
 
 ```mermaid
 flowchart LR
