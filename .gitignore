@@ -1,0 +1,143 @@
+# ==========================================
+# Python & Environment
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Secrets, Credentials, and Environment Vars
+# ==========================================
+.env
+*.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+secrets/
+*credentials*.json
+*token*.json
+auth*.json
+id_rsa
+id_ecdsa
+id_ed25519
+
+# ==========================================
+# Audio Files (Private Audio & Recordings)
+# ==========================================
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.aac
+*.opus
+*.wma
+*.aiff
+*.alac
+
+# ==========================================
+# Datasets & Large Data Files
+# ==========================================
+# Exclude raw, interim, and processed data by default
+data/raw/*
+data/processed/*
+data/interim/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/interim/.gitkeep
+!data/README.md
+
+# Large data formats
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+*.gz
+*.bz2
+*.xz
+*.parquet
+*.feather
+*.arrow
+*.h5
+*.hdf5
+*.sqlite3
+*.db
+
+# ==========================================
+# Model Weights, Checkpoints & Artifacts
+# ==========================================
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.ckpt
+*.tflite
+*.h5
+*.weights
+*.pkl
+*.pickle
+*.joblib
+checkpoints/
+models/weights/
+models/checkpoints/
+models/*.safetensors
+models/*.pt
+models/*.bin
+
+# ==========================================
+# Notebooks & Testing
+# ==========================================
+.ipynb_checkpoints
+*-checkpoint.ipynb
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# IDE & Operating System Files
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+logs/
+*.log

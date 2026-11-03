@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "final-year-project"
+version = "0.1.0"
+description = "Final Year AI/ML Engineering Project Repository"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Aseef Bandey", email = "aseefahmad46@gmail.com" }
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+    "pre-commit>=3.3.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+select = ["E", "F", "I", "W"]
+ignore = []
