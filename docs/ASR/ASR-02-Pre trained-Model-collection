@@ -1,0 +1,182 @@
+# ASR-02: Research Existing ASR Models and Architectures
+
+**Project:** Kashmiri Voice AI  
+**Task ID:** ASR-02  
+**Assigned To:** Person A  
+**Priority:** High  
+**Status:** Initial Research and Model Collection
+
+## 1. Objective
+
+The objective of ASR-02 is to identify and collect existing pretrained Automatic Speech Recognition models that can recognize Kashmiri speech and produce text in Perso-Arabic script.
+
+Instead of immediately developing a new model, the project will investigate existing multilingual and language-specific ASR systems.
+
+The collected models will subsequently be evaluated using a common Kashmiri audio test dataset.
+
+Fine-tuning will only be considered if the existing models fail to meet the project's accuracy or computational requirements.
+
+## 2. Research Platforms
+
+The following platforms will be used:
+
+1. Hugging Face – pretrained models and checkpoints.
+2. GitHub – model implementations and inference code.
+3. AI4Bharat – Indian-language speech recognition research.
+4. arXiv – research papers and technical documentation.
+5. OpenSLR – speech datasets and language resources.
+
+## 3. Initial Model Inventory
+
+### Model 1: AI4Bharat IndicConformer (Kashmiri)
+
+- Model: indicconformer_stt_ks_hybrid_ctc_rnnt_large
+- Parameters: 120M encoder parameters, according to its model card.
+- Architecture: Conformer-Large.
+- Decoder: Hybrid CTC and RNN-T.
+- Language: Kashmiri.
+- Language code: ks.
+- Input: 16 kHz mono-channel WAV.
+- Output: Transcribed text.
+- License: MIT.
+
+Model: https://huggingface.co/ai4bharat/indicconformer_stt_ks_hybrid_ctc_rnnt_large
+
+### Model 2: AI4Bharat IndicConformer Multilingual
+
+- Model: indic-conformer-600m-multilingual
+- Parameters: 600M.
+- Architecture: Multilingual Conformer.
+- Decoder: Hybrid CTC and RNN-T.
+- Languages: 22 Indian languages, including Kashmiri.
+- Language code: ks.
+- License: MIT.
+
+Model: https://huggingface.co/ai4bharat/indic-conformer-600m-multilingual
+
+### Model 3: Indic-Transcribe Core
+
+- Parameters: Approximately 1.2B.
+- Base architecture: NVIDIA Canary.
+- Encoder: FastConformer.
+- Decoder: Transformer.
+- Languages: 25 Indian languages, including Kashmiri.
+- Features: Native-script transcription and automatic language identification.
+- License: Indic Open License (verify terms before use).
+
+Model: https://huggingface.co/bodhan-ai/indic-transcribe-core
+
+### Model 4: Indic-Transcribe Flex
+
+- Parameters: Approximately 1.2B.
+- Base architecture: NVIDIA Canary.
+- Languages: 27.
+- Features: Flexible output modes, including native and alternative script representations.
+- Kashmiri support: Yes.
+- License: Verify model-specific terms before use.
+
+Model: https://huggingface.co/bodhan-ai/indic-transcribe-flex
+
+### Model 5: IndicASR
+
+- Developed by AI4Bharat.
+- Trained using the IndicVoices dataset.
+- Supports 22 Indian languages, including Kashmiri.
+- Includes multilingual speech recognition.
+- Checkpoint and inference implementation are publicly referenced in the IndicVoices repository.
+
+Repository: https://github.com/AI4Bharat/IndicVoices
+
+Research paper: https://arxiv.org/abs/2403.01926
+
+Note: Verify whether the IndicASR checkpoint is distinct from the collected IndicConformer multilingual checkpoint before counting it as an independent model.
+
+### Model 6: OpenAI Whisper
+
+- Architecture: Transformer-based encoder-decoder.
+- Available sizes: Tiny, Base, Small, Medium, Large and Turbo.
+- Multilingual speech recognition.
+- Kashmiri is not officially listed as a supported language.
+- Will be considered an exploratory baseline rather than a primary candidate.
+
+Repository: https://github.com/openai/whisper
+
+### Model 7: Meta MMS
+
+- Developed by Meta.
+- Architecture: Multilingual wav2vec 2.0-based speech models.
+- Available pretrained and fine-tuning checkpoints.
+- Kashmiri availability must be verified before testing.
+- License: CC-BY-NC 4.0 for the released MMS models.
+
+Repository: https://github.com/facebookresearch/fairseq/tree/main/examples/mms
+
+## 4. Dataset Research
+
+The following dataset will be investigated:
+
+**IndicVoices**
+
+- Covers 22 Indian languages.
+- Contains natural and spontaneous speech.
+- Includes read, extempore and conversational recordings.
+- Includes Kashmiri recordings.
+- Provides a multilingual ASR training and inference pipeline.
+
+Dataset: https://ai4bharat.iitm.ac.in/datasets/indicvoices
+
+The exact number of Kashmiri recordings, hours of speech, transcript quality and regional dialect coverage must be verified.
+
+## 5. Model Collection Strategy
+
+At this stage, the team will:
+
+1. Locate official model repositories.
+2. Record model architecture and parameter count.
+3. Identify supported languages and scripts.
+4. Record model checkpoint sizes.
+5. Check installation and inference requirements.
+6. Record licenses and usage restrictions.
+7. Collect available research papers.
+8. Identify corresponding datasets and training methodologies.
+
+No model will be fine-tuned during this task.
+
+## 6. Future Evaluation Criteria
+
+The collected models will later be evaluated using:
+
+- Word Error Rate (WER).
+- Character Error Rate (CER).
+- Inference time.
+- Memory consumption.
+- GPU and CPU compatibility.
+- Output script correctness.
+- Performance across regional Kashmiri varieties.
+- Performance on previously unseen speakers.
+
+All models must be evaluated on the same independent test recordings and consistent text normalization rules.
+
+## 7. Expected Deliverables
+
+1. ASR model inventory.
+2. Official model checkpoint links.
+3. Architecture descriptions.
+4. Research paper collection.
+5. Dataset resource collection.
+6. License and hardware requirements.
+7. Model comparison preparation.
+
+## 8. Definition of Done
+
+- [x] Existing ASR research platforms identified.
+- [x] Initial Kashmiri-compatible model candidates identified.
+- [x] Official repositories and checkpoints located.
+- [x] Initial dataset research identified.
+- [ ] Model files and checkpoints collected.
+- [ ] Model installation requirements documented.
+- [ ] License terms reviewed.
+- [ ] Research papers organized.
+- [ ] Inventory reviewed by project team.
+
+**Next Task:** ASR-03 – Collect and Prepare Existing ASR Models for Initial Evaluation.
